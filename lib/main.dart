@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 
 void main() {
@@ -105,122 +107,144 @@ class HomePage extends StatelessWidget {
   }
 
   Widget _additionalWeatherInformation() {
-    return Container(
-      // color: Colors.blueGrey,
-      padding: EdgeInsets.only(left: 25, right: 25, bottom: 40, top: 30),
-      margin: EdgeInsets.only(top: 20.0),
-      child: Column(
-        children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            crossAxisAlignment: CrossAxisAlignment.start,
+    return ClipRRect(
+      borderRadius: BorderRadius.circular(24),
+      child: BackdropFilter(
+        filter: ImageFilter.blur(sigmaX: 15, sigmaY: 15),
+        child: Container(
+          decoration: BoxDecoration(
+            color: Colors.white.withValues(alpha: 15),
+            borderRadius: BorderRadius.circular(24),
+            border: Border.all(color: Colors.white.withValues(alpha: 15)),
+          ),
+          padding: EdgeInsets.only(left: 25, right: 25, bottom: 40, top: 30),
+          margin: EdgeInsets.only(top: 20.0),
+          child: Column(
             children: [
               Row(
-                mainAxisAlignment: MainAxisAlignment.end,
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Container(
-                    padding: EdgeInsets.all(8.0),
-                    child: Image.asset(
-                      'assets/images/sun.png',
-                      height: 70,
-                      width: 70,
-                    ),
-                  ),
-
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.end,
                     children: [
-                      Text(
-                        "Sunrise",
-                        style: TextStyle(
-                          fontSize: 18,
-                          fontWeight: FontWeight.w400,
+                      Container(
+                        padding: EdgeInsets.all(8.0),
+                        child: Image.asset(
+                          'assets/images/sun.png',
+                          height: 70,
+                          width: 70,
                         ),
                       ),
-                      Text("5:34 am", style: TextStyle(fontSize: 22)),
+
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            "Sunrise",
+                            style: TextStyle(
+                              fontSize: 18,
+                              fontWeight: FontWeight.w400,
+                            ),
+                          ),
+                          Text("5:34 am", style: TextStyle(fontSize: 22)),
+                        ],
+                      ),
+                    ],
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      Container(
+                        padding: EdgeInsets.all(8.0),
+                        child: Image.asset(
+                          'assets/images/moon-and-stars.png',
+                          height: 70,
+                          width: 70,
+                        ),
+                      ),
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            "Sunset",
+                            style: TextStyle(
+                              fontSize: 18,
+                              fontWeight: FontWeight.w400,
+                            ),
+                          ),
+                          Text("6:34 pm", style: TextStyle(fontSize: 22)),
+                        ],
+                      ),
                     ],
                   ),
                 ],
               ),
+              SizedBox(height: 10),
+              Divider(),
+              SizedBox(height: 10),
               Row(
-                mainAxisAlignment: MainAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Container(
-                    padding: EdgeInsets.all(8.0),
-                    child: Image.asset(
-                      'assets/images/moon-and-stars.png',
-                      height: 70,
-                      width: 70,
-                    ),
-                  ),
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.end,
                     children: [
-                      Text("Sunset", style: TextStyle(fontSize: 16)),
-                      Text("6:34 pm", style: TextStyle(fontSize: 18)),
+                      Container(
+                        padding: EdgeInsets.all(8.0),
+                        child: Image.asset(
+                          'assets/images/hot.png',
+                          height: 70,
+                          width: 70,
+                        ),
+                      ),
+
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            "Temp Max",
+                            style: TextStyle(
+                              fontSize: 18,
+                              fontWeight: FontWeight.w400,
+                            ),
+                          ),
+                          Text("12\u00B0C", style: TextStyle(fontSize: 22)),
+                        ],
+                      ),
+                    ],
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      Container(
+                        padding: EdgeInsets.all(8.0),
+                        child: Image.asset(
+                          'assets/images/cold.png',
+                          height: 70,
+                          width: 70,
+                        ),
+                      ),
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            "Temp Min",
+                            style: TextStyle(
+                              fontSize: 18,
+                              fontWeight: FontWeight.w400,
+                            ),
+                          ),
+                          Text("8\u00B0C", style: TextStyle(fontSize: 22)),
+                        ],
+                      ),
                     ],
                   ),
                 ],
               ),
             ],
           ),
-          SizedBox(height: 10),
-          Divider(),
-          SizedBox(height: 10),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.end,
-                children: [
-                  Container(
-                    padding: EdgeInsets.all(8.0),
-                    child: Image.asset(
-                      'assets/images/hot.png',
-                      height: 70,
-                      width: 70,
-                    ),
-                  ),
-
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        "Temp Max",
-                        style: TextStyle(
-                          fontSize: 18,
-                          fontWeight: FontWeight.w400,
-                        ),
-                      ),
-                      Text("12\u00B0C", style: TextStyle(fontSize: 22)),
-                    ],
-                  ),
-                ],
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: [
-                  Container(
-                    padding: EdgeInsets.all(8.0),
-                    child: Image.asset(
-                      'assets/images/cold.png',
-                      height: 70,
-                      width: 70,
-                    ),
-                  ),
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text("Temp Min", style: TextStyle(fontSize: 16)),
-                      Text("8\u00B0C", style: TextStyle(fontSize: 18)),
-                    ],
-                  ),
-                ],
-              ),
-            ],
-          ),
-        ],
+        ),
       ),
     );
   }

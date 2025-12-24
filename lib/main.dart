@@ -7,6 +7,7 @@ void main() {
 }
 
 class WeatherAppUI extends StatelessWidget {
+  const WeatherAppUI({super.key});
   @override
   Widget build(BuildContext context) {
     return MaterialApp(title: "Weather Forcust", home: HomePage());
@@ -113,9 +114,9 @@ class HomePage extends StatelessWidget {
         filter: ImageFilter.blur(sigmaX: 15, sigmaY: 15),
         child: Container(
           decoration: BoxDecoration(
-            color: Colors.white.withValues(alpha: 15),
+            color: Colors.white.withValues(alpha: 0.15),
             borderRadius: BorderRadius.circular(24),
-            border: Border.all(color: Colors.white.withValues(alpha: 15)),
+            border: Border.all(color: Colors.white.withValues(alpha: 0.2)),
           ),
           padding: EdgeInsets.only(left: 25, right: 25, bottom: 40, top: 30),
           margin: EdgeInsets.only(top: 20.0),
@@ -125,58 +126,15 @@ class HomePage extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.end,
-                    children: [
-                      Container(
-                        padding: EdgeInsets.all(8.0),
-                        child: Image.asset(
-                          'assets/images/sun.png',
-                          height: 70,
-                          width: 70,
-                        ),
-                      ),
-
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            "Sunrise",
-                            style: TextStyle(
-                              fontSize: 18,
-                              fontWeight: FontWeight.w400,
-                            ),
-                          ),
-                          Text("5:34 am", style: TextStyle(fontSize: 22)),
-                        ],
-                      ),
-                    ],
+                  _infoItem(
+                    icon: 'assets/images/sun.png',
+                    title: "Sunrise",
+                    value: "5:34 am",
                   ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: [
-                      Container(
-                        padding: EdgeInsets.all(8.0),
-                        child: Image.asset(
-                          'assets/images/moon-and-stars.png',
-                          height: 70,
-                          width: 70,
-                        ),
-                      ),
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            "Sunset",
-                            style: TextStyle(
-                              fontSize: 18,
-                              fontWeight: FontWeight.w400,
-                            ),
-                          ),
-                          Text("6:34 pm", style: TextStyle(fontSize: 22)),
-                        ],
-                      ),
-                    ],
+                  _infoItem(
+                    icon: 'assets/images/moon-and-stars.png',
+                    title: 'Sunset',
+                    value: "6:34 pm",
                   ),
                 ],
               ),
@@ -187,58 +145,15 @@ class HomePage extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.end,
-                    children: [
-                      Container(
-                        padding: EdgeInsets.all(8.0),
-                        child: Image.asset(
-                          'assets/images/hot.png',
-                          height: 70,
-                          width: 70,
-                        ),
-                      ),
-
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            "Temp Max",
-                            style: TextStyle(
-                              fontSize: 18,
-                              fontWeight: FontWeight.w400,
-                            ),
-                          ),
-                          Text("12\u00B0C", style: TextStyle(fontSize: 22)),
-                        ],
-                      ),
-                    ],
+                  _infoItem(
+                    icon: 'assets/images/hot.png',
+                    title: "Temp Max",
+                    value: "12\u00B0C",
                   ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: [
-                      Container(
-                        padding: EdgeInsets.all(8.0),
-                        child: Image.asset(
-                          'assets/images/cold.png',
-                          height: 70,
-                          width: 70,
-                        ),
-                      ),
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            "Temp Min",
-                            style: TextStyle(
-                              fontSize: 18,
-                              fontWeight: FontWeight.w400,
-                            ),
-                          ),
-                          Text("8\u00B0C", style: TextStyle(fontSize: 22)),
-                        ],
-                      ),
-                    ],
+                  _infoItem(
+                    icon: 'assets/images/cold.png',
+                    title: "Temp Min",
+                    value: "8\u00B0C",
                   ),
                 ],
               ),
@@ -246,6 +161,32 @@ class HomePage extends StatelessWidget {
           ),
         ),
       ),
+    );
+  }
+
+  Widget _infoItem({
+    required String icon,
+    required String title,
+    required String value,
+  }) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.start,
+      children: [
+        Container(
+          padding: EdgeInsets.all(8.0),
+          child: Image.asset(icon, height: 70, width: 70),
+        ),
+        Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              title,
+              style: TextStyle(fontSize: 18, fontWeight: FontWeight.w400),
+            ),
+            Text(value, style: TextStyle(fontSize: 22)),
+          ],
+        ),
+      ],
     );
   }
 }
